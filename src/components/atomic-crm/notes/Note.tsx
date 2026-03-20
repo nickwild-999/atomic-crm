@@ -28,12 +28,16 @@ import type { ContactNote, DealNote } from "../types";
 import { NoteAttachments } from "./NoteAttachments";
 import { NoteInputs } from "./NoteInputs";
 import { useGetSalesName } from "../sales/useGetSalesName";
+import { NOTE_TYPE_ICONS } from "./NoteTypeBadge";
+import { useConfigurationContext } from "../root/ConfigurationContext";
 
 export const Note = ({
   showStatus,
+  showType,
   note,
 }: {
   showStatus?: boolean;
+  showType?: boolean;
   note: DealNote | ContactNote;
   isLast: boolean;
 }) => {
@@ -50,6 +54,11 @@ export const Note = ({
   const salesName = useGetSalesName(note.sales_id, {
     enabled: !isCurrentUser,
   });
+  const { noteTypes } = useConfigurationContext();
+  const noteType = note.type
+    ? noteTypes?.find((t) => t.value === note.type)
+    : null;
+  const NoteTypeIcon = noteType?.icon ? NOTE_TYPE_ICONS[noteType.icon] : null;
 
   // Detect if content is truncated
   useEffect(() => {
@@ -164,7 +173,7 @@ export const Note = ({
       </div>
       {isEditing ? (
         <Form onSubmit={handleNoteUpdate} record={note} className="mt-1">
-          <NoteInputs showStatus={showStatus} />
+          <NoteInputs showStatus={showStatus} showType={showType} />
           <div className="flex justify-end mt-2 space-x-4">
             <Button
               variant="ghost"
@@ -187,6 +196,14 @@ export const Note = ({
         </Form>
       ) : (
         <div className="pt-2 text-sm max-w-150">
+          {showType && NoteTypeIcon && noteType?.value !== "none" && (
+            <span
+              className="float-left mr-2 mt-0.5"
+              style={noteType?.color ? { color: noteType.color } : undefined}
+            >
+              <NoteTypeIcon className="w-4 h-4" />
+            </span>
+          )}
           {note.text && (
             <div
               ref={contentRef}

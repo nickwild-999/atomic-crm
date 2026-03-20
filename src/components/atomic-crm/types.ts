@@ -108,6 +108,7 @@ export type ContactNote = {
   date: string;
   sales_id: Identifier;
   status: string;
+  type?: string;
   attachments?: AttachmentNote[];
 } & Pick<RaRecord, "id">;
 
@@ -219,6 +220,11 @@ export type DealStage = LabeledValue;
 
 export interface NoteStatus extends LabeledValue {
   color: string;
+}
+
+export interface NoteType extends LabeledValue {
+  color?: string;
+  icon?: string;
 }
 
 export interface ContactGender {
