@@ -100,7 +100,22 @@ export type Contact = {
   phone_jsonb: PhoneNumberAndType[];
   nb_tasks?: number;
   company_name?: string;
+  lead_source?: string;
+  contact_type?: string;
+  social_links_jsonb?: SocialLink[];
 } & Pick<RaRecord, "id">;
+
+export type SocialLink = {
+  url: string;
+  type:
+    | "LinkedIn"
+    | "Twitter"
+    | "Instagram"
+    | "Facebook"
+    | "YouTube"
+    | "TikTok"
+    | "Other";
+};
 
 export type ContactNote = {
   contact_id: Identifier;

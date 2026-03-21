@@ -62,6 +62,28 @@ export const defaultNoteTypes: NoteType[] = [
   { value: "demo", label: "Demo", color: "#b87de8", icon: "monitor" },
 ];
 
+export const defaultLeadSources = [
+  { value: "linkedin", label: "LinkedIn" },
+  { value: "website", label: "Website" },
+  { value: "referral", label: "Referral" },
+  { value: "event", label: "Event" },
+  { value: "cold-outreach", label: "Cold Outreach" },
+  { value: "email-campaign", label: "Email Campaign" },
+  { value: "other", label: "Other" },
+];
+
+export const defaultContactTypes = [
+  { value: "ceo", label: "CEO" },
+  { value: "decision-maker", label: "Decision Maker" },
+  { value: "champion", label: "Champion" },
+  { value: "influencer", label: "Influencer" },
+  { value: "end-user", label: "End User" },
+  { value: "partner", label: "Partner" },
+  { value: "coach", label: "Coach" },
+  { value: "athlete", label: "Athlete" },
+  { value: "other", label: "Other" },
+];
+
 export const defaultTaskTypes = [
   { value: "none", label: "None" },
   { value: "email", label: "Email" },
@@ -76,10 +98,12 @@ export const defaultTaskTypes = [
 
 export const defaultConfiguration: ConfigurationContextValue = {
   companySectors: defaultCompanySectors,
+  contactTypes: defaultContactTypes,
   currency: defaultCurrency,
   dealCategories: defaultDealCategories,
   dealPipelineStatuses: defaultDealPipelineStatuses,
   dealStages: defaultDealStages,
+  leadSources: defaultLeadSources,
   noteStatuses: defaultNoteStatuses,
   noteTypes: defaultNoteTypes,
   taskTypes: defaultTaskTypes,

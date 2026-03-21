@@ -70,6 +70,7 @@ export const SimpleFormIterator = (props: SimpleFormIteratorProps) => {
     reOrderButtons,
     children,
     className,
+    itemClassName,
     resource,
     disabled,
     disableAdd = false,
@@ -114,6 +115,7 @@ export const SimpleFormIterator = (props: SimpleFormIteratorProps) => {
                 fields={fields}
                 getItemLabel={getItemLabel}
                 index={index}
+                itemClassName={itemClassName}
                 removeButton={removeButton}
                 reOrderButtons={reOrderButtons}
                 resource={resource}
@@ -141,6 +143,7 @@ export interface SimpleFormIteratorProps extends Partial<UseFieldArrayReturn> {
   addButton?: ReactElement;
   children?: ReactElement | ReactElement[];
   className?: string;
+  itemClassName?: string;
   readOnly?: boolean;
   disabled?: boolean;
   disableAdd?: boolean;
@@ -186,6 +189,7 @@ export const SimpleFormIteratorItem = React.forwardRef(
       getItemLabel,
       index,
       inline,
+      itemClassName,
       removeButton = defaultRemoveItemButton,
       reOrderButtons = defaultReOrderButtons,
     } = props;
@@ -223,6 +227,7 @@ export const SimpleFormIteratorItem = React.forwardRef(
             "flex flex-row items-start justify-between gap-2 pb-2 border-b border-border last:border-b-0",
             // Align the buttons with the input
             "[&:has(label)>.simple-form-iterator-item-actions]:pt-10",
+            itemClassName,
           )}
         >
           {label != null && label !== false && (
@@ -255,6 +260,7 @@ export interface SimpleFormIteratorItemProps
   disableReordering?: boolean;
   getItemLabel?: boolean | GetItemLabelFunc;
   inline?: boolean;
+  itemClassName?: string;
   removeButton?: ReactElement;
   reOrderButtons?: ReactElement;
 }

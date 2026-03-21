@@ -4,8 +4,19 @@ import { ArrayField } from "@/components/admin/array-field";
 import { SingleFieldList } from "@/components/admin/single-field-list";
 import { TextField } from "@/components/admin/text-field";
 import { EmailField } from "@/components/admin/email-field";
-import { Mail, Phone, Linkedin, Check } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Facebook,
+  Youtube,
+  Globe,
+  Check,
+} from "lucide-react";
 import type { ReactNode } from "react";
+import type { SocialLink } from "../types";
 import {
   contactGender,
   translateContactGenderLabel,
@@ -33,22 +44,22 @@ export const ContactPersonalInfo = () => {
         </p>
       )}
 
-      {record.linkedin_url && (
+      {record.social_links_jsonb?.map((link, i) => (
         <PersonalInfoRow
-          icon={<Linkedin className="w-4 h-4 text-muted-foreground" />}
+          key={i}
+          icon={<SocialIcon type={link.type} />}
           primary={
             <a
               className="underline hover:no-underline text-sm text-muted-foreground"
-              href={record.linkedin_url}
+              href={link.url}
               target="_blank"
               rel="noopener noreferrer"
-              title={record.linkedin_url}
             >
-              LinkedIn
+              {link.type}
             </a>
           }
         />
-      )}
+      ))}
       <ArrayField source="phone_jsonb">
         <SingleFieldList className="flex-col gap-y-0">
           <PersonalInfoRow
@@ -115,6 +126,24 @@ const EmailRow = () => {
       primary={<EmailField source="email" />}
     />
   );
+};
+
+const SocialIcon = ({ type }: { type: SocialLink["type"] }) => {
+  const cls = "w-4 h-4 text-muted-foreground";
+  switch (type) {
+    case "LinkedIn":
+      return <Linkedin className={cls} />;
+    case "Twitter":
+      return <Twitter className={cls} />;
+    case "Instagram":
+      return <Instagram className={cls} />;
+    case "Facebook":
+      return <Facebook className={cls} />;
+    case "YouTube":
+      return <Youtube className={cls} />;
+    default:
+      return <Globe className={cls} />;
+  }
 };
 
 const PersonalInfoRow = ({

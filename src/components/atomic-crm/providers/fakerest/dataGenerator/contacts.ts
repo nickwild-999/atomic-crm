@@ -7,7 +7,11 @@ import {
   random,
 } from "faker/locale/en_US";
 
-import { defaultNoteStatuses } from "../../../root/defaultConfiguration";
+import {
+  defaultContactTypes,
+  defaultLeadSources,
+  defaultNoteStatuses,
+} from "../../../root/defaultConfiguration";
 import { contactGender } from "../../../contacts/contactGender";
 import type { Company, Contact } from "../../../types";
 import type { Db } from "./types";
@@ -96,6 +100,16 @@ export const generateContacts = (db: Db, size = 500): Required<Contact>[] => {
       sales_id: company.sales_id,
       nb_tasks: 0,
       linkedin_url: null,
+      lead_source: random.arrayElement([
+        ...defaultLeadSources.map((s) => s.value),
+        null,
+        null,
+      ]),
+      contact_type: random.arrayElement([
+        ...defaultContactTypes.map((t) => t.value),
+        null,
+        null,
+      ]),
     };
   });
 };

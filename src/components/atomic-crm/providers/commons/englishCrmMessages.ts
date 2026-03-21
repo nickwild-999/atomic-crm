@@ -85,6 +85,10 @@ export const englishCrmMessages = {
         background: "Background info (bio, how you met, etc)",
         has_newsletter: "Has newsletter",
         sales_id: "Account manager",
+        lead_source: "Lead source",
+        contact_type: "Contact type",
+        social_links_jsonb: "Social links",
+        social_url: "URL",
       },
       action: {
         add: "Add contact",
@@ -376,6 +380,7 @@ export const englishCrmMessages = {
       last_activity_with_date: "last activity %{date}",
       load_more: "Load more",
       misc: "Misc",
+      none: "None",
       past: "Past",
       read_more: "Read more",
       retry: "Retry",
@@ -453,6 +458,10 @@ export const englishCrmMessages = {
       title: "Import Data",
     },
     settings: {
+      contacts: {
+        lead_sources: "Lead Sources",
+        contact_types: "Contact Types",
+      },
       companies: {
         sectors: "Sectors",
       },
