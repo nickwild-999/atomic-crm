@@ -39,6 +39,11 @@ const SECTIONS = [
     fallback: "Branding",
   },
   {
+    id: "contacts",
+    label: "resources.contacts.name",
+    fallback: "Contacts",
+  },
+  {
     id: "companies",
     label: "resources.companies.name",
     fallback: "Companies",
@@ -126,6 +131,8 @@ const transformFormValues = (data: Record<string, any>) => ({
     lightModeLogo: data.lightModeLogo,
     darkModeLogo: data.darkModeLogo,
     currency: data.currency,
+    contactTypes: ensureValues(data.contactTypes),
+    leadSources: ensureValues(data.leadSources),
     companySectors: ensureValues(data.companySectors),
     dealCategories: ensureValues(data.dealCategories),
     taskTypes: ensureValues(data.taskTypes),
@@ -175,6 +182,8 @@ const SettingsForm = () => {
       lightModeLogo: { src: config.lightModeLogo },
       darkModeLogo: { src: config.darkModeLogo },
       currency: config.currency,
+      contactTypes: config.contactTypes,
+      leadSources: config.leadSources,
       companySectors: config.companySectors,
       dealCategories: config.dealCategories,
       taskTypes: config.taskTypes,
@@ -310,6 +319,34 @@ const SettingsFormFields = () => {
                 />
               </div>
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Contacts */}
+        <Card id="contacts">
+          <CardContent className="space-y-4">
+            <h2 className="text-xl font-semibold text-muted-foreground">
+              {translate("resources.contacts.name", { smart_count: 2 })}
+            </h2>
+            <h3 className="text-lg font-medium text-muted-foreground">
+              {translate("crm.settings.contacts.lead_sources")}
+            </h3>
+            <ArrayInput source="leadSources" label={false} helperText={false}>
+              <SimpleFormIterator disableReordering disableClear>
+                <TextInput source="label" label={false} />
+              </SimpleFormIterator>
+            </ArrayInput>
+
+            <Separator />
+
+            <h3 className="text-lg font-medium text-muted-foreground">
+              {translate("crm.settings.contacts.contact_types")}
+            </h3>
+            <ArrayInput source="contactTypes" label={false} helperText={false}>
+              <SimpleFormIterator disableReordering disableClear>
+                <TextInput source="label" label={false} />
+              </SimpleFormIterator>
+            </ArrayInput>
           </CardContent>
         </Card>
 
