@@ -155,7 +155,8 @@ const ContactPersonalInformationInputs = () => {
           inline
           disableReordering
           disableClear
-          className="[&>ul>li]:border-b-0 [&>ul>li]:pb-0"
+          className="[&>ul]:grid [&>ul]:grid-cols-2 [&>ul]:gap-2"
+          itemClassName="border border-border rounded-md p-2 !border-b !pb-2 last:!border-b last:!pb-2"
         >
           <TextInput
             source="email"
@@ -183,7 +184,8 @@ const ContactPersonalInformationInputs = () => {
           inline
           disableReordering
           disableClear
-          className="[&>ul>li]:border-b-0 [&>ul>li]:pb-0"
+          className="[&>ul]:grid [&>ul]:grid-cols-2 [&>ul]:gap-2"
+          itemClassName="border border-border rounded-md p-2 !border-b !pb-2 last:!border-b last:!pb-2"
         >
           <TextInput
             source="number"
@@ -208,7 +210,8 @@ const ContactPersonalInformationInputs = () => {
           inline
           disableReordering
           disableClear
-          className="[&>ul>li]:border-b-0 [&>ul>li]:pb-0"
+          className="[&>ul]:grid [&>ul]:grid-cols-2 [&>ul]:gap-2"
+          itemClassName="border border-border rounded-md p-2 !border-b !pb-2 last:!border-b last:!pb-2"
         >
           <TextInput
             source="url"
