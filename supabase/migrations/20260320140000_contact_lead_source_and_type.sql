@@ -23,7 +23,6 @@ SELECT
     co.phone_jsonb,
     co.lead_source,
     co.contact_type,
-    co.social_links_jsonb,
     (jsonb_path_query_array(co.email_jsonb, '$[*]."email"'))::text AS email_fts,
     (jsonb_path_query_array(co.phone_jsonb, '$[*]."number"'))::text AS phone_fts,
     c.name AS company_name,

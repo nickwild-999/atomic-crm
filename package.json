@@ -7,6 +7,7 @@
     "test:unit:functions": "vitest --config vitest.functions.config.ts",
     "test:integration": "vitest --config vitest.integration.config.ts",
     "dev": "vite --force",
+    "dev:remote": "vite --force --mode remote",
     "dev:demo": "vite --config vite.demo.config --force",
     "build": "tsc && vite build",
     "build:e2e": "vite build --mode e2e",
