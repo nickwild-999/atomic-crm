@@ -1,0 +1,13 @@
+services:
+  atomic-crm:
+    build:
+      context: .
+      args:
+        VITE_SUPABASE_URL: ${VITE_SUPABASE_URL}
+        VITE_SB_PUBLISHABLE_KEY: ${VITE_SB_PUBLISHABLE_KEY}
+        VITE_ATTACHMENTS_BUCKET: ${VITE_ATTACHMENTS_BUCKET:-attachments}
+        VITE_INBOUND_EMAIL: ${VITE_INBOUND_EMAIL:-}
+        VITE_IS_DEMO: ${VITE_IS_DEMO:-false}
+    ports:
+      - "3000:80"
+    restart: unless-stopped

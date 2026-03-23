@@ -1,0 +1,17 @@
+# Atomic CRM — Portainer stack for NAS
+#
+# Usage:
+#   1. Copy this file to your NAS (or paste into Portainer → Stacks → Add stack)
+#   2. Set the following environment variables in Portainer:
+#        REPO_OWNER=nickwild-999
+#   3. The image is pre-built with Supabase credentials baked in — no env vars needed at runtime.
+#
+# To pull the latest image:
+#   docker compose -f docker-compose.nas.yml pull && docker compose -f docker-compose.nas.yml up -d
+
+services:
+  atomic-crm:
+    image: ghcr.io/${REPO_OWNER}/atomic-crm:latest
+    ports:
+      - "8014:80"
+    restart: unless-stopped
